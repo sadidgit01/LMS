@@ -26,7 +26,7 @@ export const AppContextProvider = (props) => {
     
   }
 
-  // Use useEffect to fetch courses on component mount
+  // Use useEffect to fetch courses on component mount 
   useEffect(() => {
     fetchAllCourses();
   }, []);
