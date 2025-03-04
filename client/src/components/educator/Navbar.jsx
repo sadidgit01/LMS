@@ -6,7 +6,7 @@ import { AppContext } from '../../context/AppContext'
 
 const Navbar = () => {
 
-   const {navigate} = useContext(AppContext);  //const navigate has been destructured from AppContext  
+   const {navigate , isEducator} = useContext(AppContext);  //const navigate has been destructured from AppContext  
 
 const isCourseListPage = location.pathname.includes('/course-list');
 
@@ -24,7 +24,7 @@ const {user} = useUser();
             <div className='flex items-center gap-5'>
                 { user &&            // if user is signed up then only display "Become Educator" button and "My Enrollments" link otherwise display nothing</>
                  <>
-                 <button>Become Educator</button>
+                 <button onClick={()=>{navigate('/Educator')}}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
                  | <Link to='/my-enrollments'>My Enrollments</Link>
                 </>
                 }
@@ -43,7 +43,7 @@ const {user} = useUser();
         
         { user &&                                                                            //user && </> is used to display the content when user is logged in
                  <>
-                 <button>Become Educator</button>
+                 <button onClick={()=>{navigate('/Educator')}}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
                  | <Link to='/my-enrollments'>My Enrollments</Link>
                 </>
                 }

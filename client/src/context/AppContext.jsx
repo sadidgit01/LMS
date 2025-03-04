@@ -10,8 +10,11 @@ export const AppContextProvider = (props) => {
   const navigate= useNavigate();  //useNavigate is a hook that allows us to navigate to different pages in our app. We will use this hook to navigate to the course details page when a course is clicked on. We will pass this hook to the value object that we will pass to the AppContext.Provider component. This will allow us to access the navigate hook in any component that is wrapped in the AppContextProvider component.
   
   
-  const [allCourses, setAllCourses] = useState([]);      //when we run the program, it will fetch all the courses from the dummyCourses array and set it to the allCourses state. its empty at first but when the program runs, it will be filled with the dummyCourses array.
-
+  const [allCourses, setAllCourses] = useState([]);      
+  const [isEducator, setIsEducator]= useState([true])
+  
+  
+  
   // Fetch all courses
   const fetchAllCourses = async () => {
     setAllCourses(dummyCourses);
@@ -19,10 +22,14 @@ export const AppContextProvider = (props) => {
 
   //Functon to calculate the average rating of a course
   const calculateRating =(course) => {
-    if (course.courseRAting.length === 0){
+    if (course.courseRatings.length === 0){
         return 0;
     }
     let totalRating = 0;
+    course.courseRatings.forEach(rating => {
+        totalRating += rating.rating; 
+    })
+    return (totalRating/course.courseRatings.length) 
     
   }
 
@@ -33,7 +40,7 @@ export const AppContextProvider = (props) => {
 
 const value = {
     currency,
-    allCourses, navigate
+    allCourses, navigate , calculateRating , isEducator, setIsEducator
     
 };
 
