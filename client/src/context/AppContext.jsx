@@ -3,14 +3,14 @@ import { dummyCourses } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 
 
-export const AppContext = createContext();
+export const AppContext = createContext(); //
 
 export const AppContextProvider = (props) => {
   const currency = import.meta.env.VITE_CURRENCY;
   const navigate= useNavigate();  //useNavigate is a hook that allows us to navigate to different pages in our app. We will use this hook to navigate to the course details page when a course is clicked on. We will pass this hook to the value object that we will pass to the AppContext.Provider component. This will allow us to access the navigate hook in any component that is wrapped in the AppContextProvider component.
   
   
-  const [allCourses, setAllCourses] = useState([]);      
+  const [allCourses, setAllCourses] = useState([]);   
   const [isEducator, setIsEducator]= useState([true])
   
   
@@ -45,8 +45,8 @@ const value = {
 };
 
   return (
-    <AppContext.Provider value={value}>
-      {props.children}
-    </AppContext.Provider>
+    <AppContext.Provider value={value}> 
+      {props.children}  
+    </AppContext.Provider>    //The AppContextProvider component will wrap the entire application in the App.jsx file. This will allow us to access the values passed to the AppContext.Provider component in any component that is a child of the AppContextProvider component.
   );
 };

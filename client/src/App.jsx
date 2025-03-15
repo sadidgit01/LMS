@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className='text-default min-h-screen bg-white'>
       {!isEducatorRoute && <Navbar/>}                    
-                                                          {/* Navbar is displayed only when the route is not educator */}
+      {/* Navbar is displayed only when the route is not educator */}
       
      
      <Routes>
