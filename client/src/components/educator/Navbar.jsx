@@ -11,7 +11,7 @@ const Navbar = () => {
 const isCourseListPage = location.pathname.includes('/course-list');
 
 const {openSignIn} = useClerk();   //"Create Account" button functionality
-const {user} = useUser();
+const {user} = useUser();  //user is signed up or not
 
 
 
@@ -24,7 +24,7 @@ const {user} = useUser();
             <div className='flex items-center gap-5'>
                 { user &&            // if user is signed up then only display "Become Educator" button and "My Enrollments" link otherwise display nothing</>
                  <>
-                 <button onClick={()=>{navigate('/Educator')}}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
+                 <button onClick={()=>{navigate('/Educator')}}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button> {/*if user is educator then display "Educator Dashboard" otherwise "Become Educator"*/}
                  | <Link to='/my-enrollments'>My Enrollments</Link>
                 </>
                 }

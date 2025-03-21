@@ -374,7 +374,7 @@ export const dummyCourses = [
                         "lectureId": "lecture1",
                         "lectureTitle": "What is Cybersecurity?",
                         "lectureDuration": 10,
-                        "lectureUrl": "https://youtu.be/samplelink5",
+                        "lectureUrl": "https://www.youtube.com/watch?v=vK4Mno4QYqk&t=10s",
                         "isPreviewFree": true,
                         "lectureOrder": 1
                     },

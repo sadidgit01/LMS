@@ -6,7 +6,7 @@ const SearchBar = ({ data }) => {
   const navigate = useNavigate() // to navigate to the search page or other pages
 
   // to store the input field data entered in the search bar
-  const [input, setInput] = useState(data ? data : '')
+  const [input, setInput] = useState(data ? data : '') // if data is passed, set the input to the data, else set it to an empty string
 
   const onSearchHandler = (e) => {
     e.preventDefault() // when we submit the form, the page should not reload
