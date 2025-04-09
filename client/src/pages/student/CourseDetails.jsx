@@ -21,12 +21,13 @@ const CourseDetails = () => {
    
     const {allCourses,calculateRating, calculateNoOfLectures, calculateCourseDuration, calculateChapterTime, currency } = useContext(AppContext)
     const fetchCourseData = async() => {    
-      const findCourse = allCourses.find(course => course._id === id)  ////fetchCourseData function will find the course with the id that matches the id in the URL. The course data will be set to the courseData state variable.If the id is equal to the course id then.
-        setCourseData(findCourse);   
+      const findCourse = allCourses.find(course => course._id === id)  ////fetchCourseData function will find the course with the id that matches the id in the URL. 
+        setCourseData(findCourse);  
+        //The course data will be set to the courseData state variable.If the id is equal to the course id then.
     }
     
     useEffect(() => {
-        fetchCourseData()
+        fetchCourseData() 
     },[allCourses])  //whenever allCourses changes, the useEffect hook will run. It will call the fetchCourseData function to fetch the course data of the course with the id that matches the id in the URL.
     
 
@@ -42,7 +43,7 @@ const CourseDetails = () => {
 
 return courseData ? (            //if courseData is available, then display the course details
 
-    <>
+    <> 
     <div className='flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left'>
        <div className='absolute top-0 left-0 w-full h-section-height -z-1 bg-gradient-to-b from-cyan-100/70'> {/* background gradient from top to bottom*/} </div> 
 
@@ -113,9 +114,9 @@ return courseData ? (            //if courseData is available, then display the 
               <div>
                 <p className='text-gray-800 font-medium'>{lecture.lectureTitle}</p>
                 <div className='flex items-center gap-2 mt-1'>
-                  {lecture.isPreviewFree && (
-                    <p onClick={() => setPlayerData({ 
-                      videoId: lecture.lectureUrl.split('/').pop() 
+                  {lecture.isPreviewFree && ( 
+                    <p onClick={() => setPlayerData({ //
+                     videoId: lecture.lectureUrl.split('/').pop() //split the lectureUrl by '/'
                     })}
                     className= 'text-xs text-blue-600 font-medium bg-blue-50 px-2 py-0.5 rounded'>
                       Preview
@@ -153,12 +154,10 @@ return courseData ? (            //if courseData is available, then display the 
         playerData ? (
           <YouTube 
             videoId={playerData.videoId} 
-            opts={{
-              playerVars: {
-                autoplay: 1
-              }
+            opts={{                      //opts is used to set the player options
+              playerVars: {autoplay: 1}
             }} 
-            iframeClassName='w-full aspect-video'
+            iframeClassName='w-full aspect-video' //iframeClassName is used to set the width of the video
           />
         ) : <img src={courseData.courseThumbnail} alt='courseThumbnail' className='w-full h-auto rounded-lg' />
       }
@@ -187,7 +186,7 @@ return courseData ? (            //if courseData is available, then display the 
 
 </div>
 <button 
-  className="group relative inline-flex w-full items-center justify-center md:mt-6 mt-4 px-6 py-3.5 
+  className="group relative inline-flex w-full items-center justify-center md:mt-6 mt-4 px-6 py-3.5  
     font-semibold tracking-wide text-white bg-blue-600 rounded-lg overflow-hidden
     transition-all duration-300 ease-out
     hover:shadow-lg hover:shadow-blue-500/30
@@ -204,14 +203,14 @@ return courseData ? (            //if courseData is available, then display the 
   
   {/* Button content */}
   <span className="relative flex items-center justify-center gap-2">
-    {isAlreadyEnrolled ? ('Already Enrolled') : (
+    {isAlreadyEnrolled ? ('Already Enrolled') : ( 
       <>
         <span>Enroll Now</span>
         <svg 
           className="w-5 h-5 transform transition-all duration-300 ease-out
             group-hover:translate-x-1 group-hover:scale-110" 
-          fill="none" 
-          viewBox="0 0 24 24"
+          fill="none"  
+          viewBox="0 0 24 24" 
           stroke="currentColor"
         >
           <path 

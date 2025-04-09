@@ -15,8 +15,8 @@ const CoursesList = () => {
 
   // UseEffect to filter courses based on the input
   useEffect(() => {
-    if (input) {
-      const tempCourses = allCourses.filter(
+    if (input) { 
+      const tempCourses = allCourses.filter( 
         item => item.courseTitle.toLowerCase().includes(input.toLowerCase())
       )
       setFilteredCourse(tempCourses)
@@ -35,7 +35,7 @@ const CoursesList = () => {
               <span className='text-blue-600 cursor-pointer' onClick={() => navigate('/')}>Home</span> / <span>Course List</span>
             </p>
           </div>
-          <SearchBar data={input} />
+          <SearchBar data={input} /> 
         </div>
 
       

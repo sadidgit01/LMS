@@ -3,7 +3,7 @@ import { assets } from '../../assets/assets'
 import { AppContext } from '../../context/AppContext'
 import { Link } from 'react-router-dom'
 
-const CourseCard = ({course}) => {
+const CourseCard = ({course}) => {   //course 
 
     const{currency, calculateRating }= useContext(AppContext)
 

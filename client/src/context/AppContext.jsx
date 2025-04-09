@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { dummyCourses } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
-import humanizeDuration from "humanize-duration";
+import humanizeDuration from "humanize-duration"; 
 
 export const AppContext = createContext();
 
@@ -11,6 +11,7 @@ export const AppContextProvider = (props) => {
 
   const [allCourses, setAllCourses] = useState([]);
   const [isEducator, setIsEducator] = useState([true]);
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
 
   // Fetch all courses. This function will fetch all the courses from the server and set the allCourses state variable with the fetched courses. We will use dummy data for now. We will replace this with actual data later.
   const fetchAllCourses = async () => {
@@ -18,7 +19,7 @@ export const AppContextProvider = (props) => {
   };
 
   // Function to calculate the average rating of a course
-  const calculateRating = (course) => {
+  const calculateRating = (course) => {  //course is an object that contains the course details. it is passed as an argument to the calculateRating function.it has been created
     if (course.courseRatings.length === 0) {
       return 0;
     }
@@ -42,7 +43,7 @@ export const AppContextProvider = (props) => {
   const calculateCourseDuration = (course) => {
     let time = 0;
     course.courseContent.map((chapter) =>
-      chapter.chaptercntent.map((lecture) => (time += lecture.lectureDuration))
+      chapter.chapterContent.map((lecture) => (time += lecture.lectureDuration))
     );
     return humanizeDuration(time * 60 * 1000, { units: ["h", "m"] });
   };
@@ -58,13 +59,20 @@ export const AppContextProvider = (props) => {
     return totalLectures;
   };
 
+  // Function to fetch user enrolled courses
+  const fetchUserEnrolledCourses = async () => {
+    setEnrolledCourses(dummyCourses); //this setEnrolledCourses function will set the enrolledCourses state variable with the fetched courses by calling the fetchUserEnrolledCourses function.
+  };
+
+
   // Use useEffect to fetch courses on component mount
   useEffect(() => {
-    fetchAllCourses();
+    fetchAllCourses()
+    fetchUserEnrolledCourses()
   }, []);
 
   
-  //these are functions and variables that we want to pass to the child components. Using the AppContext.Provider component.So that we can access these functions and variables in any other components.
+  //value object : these are functions and state variables that we want to pass to the child components. Using the AppContext.Provider component.So that we can access these functions and variables in any other components. 
   const value = { 
     currency,
     allCourses,
@@ -74,7 +82,9 @@ export const AppContextProvider = (props) => {
     setIsEducator,
     calculateChapterTime,
     calculateCourseDuration,
-    claculateNoOfLectures
+    claculateNoOfLectures,
+    enrolledCourses,
+    fetchUserEnrolledCourses
   };
 
   return (

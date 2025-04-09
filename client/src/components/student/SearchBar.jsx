@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { assets } from '../../assets/assets'
 import { useNavigate } from 'react-router-dom'
 
-const SearchBar = ({ data }) => {
+const SearchBar = ({ data }) => { 
   const navigate = useNavigate() // to navigate to the search page or other pages
 
   // to store the input field data entered in the search bar
   const [input, setInput] = useState(data ? data : '') // if data is passed, set the input to the data, else set it to an empty string
 
   const onSearchHandler = (e) => {
-    e.preventDefault() // when we submit the form, the page should not reload
+    e.preventDefault()                 // when we submit the form, the page should not reload
     navigate('/course-list/' + input) // navigate to the course-list page with the input
   }
 
