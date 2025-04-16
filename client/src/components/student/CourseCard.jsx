@@ -3,7 +3,7 @@ import { assets } from '../../assets/assets'
 import { AppContext } from '../../context/AppContext'
 import { Link } from 'react-router-dom'
 
-const CourseCard = ({course}) => {   //course 
+const CourseCard = ({course}) => {   //course is a prop passed from the parent component which is CourseList.jsx.
 
     const{currency, calculateRating }= useContext(AppContext)
 
