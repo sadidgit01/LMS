@@ -7,7 +7,7 @@ import YouTube from 'react-youtube';
 import Footer from '../../components/student/Footer';
 import Loading from '../../components/student/Loading';
 import axios from 'axios';
-import { toast } from 'react-hot-toast';  // Correct import
+import { toast } from 'react-hot-toast'; // Importing toast for notifications
 import Rating from '../../components/student/Rating';
 
 
